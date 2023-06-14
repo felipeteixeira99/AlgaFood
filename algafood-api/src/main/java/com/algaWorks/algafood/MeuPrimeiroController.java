@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller //anotacao 
+@Controller //Anotacao do REST controller 
 public class MeuPrimeiroController {
 	
 	@GetMapping("/hello") //caminho 
