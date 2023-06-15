@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/bin/
+.classpath
+.project
+.settings/
+*.iml
+.idea/
+nbproject/
+build/
+.vscode/
