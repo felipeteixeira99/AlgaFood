@@ -10,7 +10,7 @@ public class MeuPrimeiroController {
 	@GetMapping("/hello") //caminho 
 	@ResponseBody //resposta
 	public String hello() {
-		return "Hello Word, eu fui programado pelo o Felipe Programador ";
+		return "Hello Word, eu fui programado pelo o Felipe Programador Senior";
 	}
 
 }
