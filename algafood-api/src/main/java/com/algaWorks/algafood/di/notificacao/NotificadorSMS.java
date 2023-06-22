@@ -1,9 +1,11 @@
 package com.algaWorks.algafood.di.notificacao;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.algaWorks.algafood.di.modelo.Cliente;
 
+@Primary
 @Component
 public class NotificadorSMS implements Notificador {
 	
