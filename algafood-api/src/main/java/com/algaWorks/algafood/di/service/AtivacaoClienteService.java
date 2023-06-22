@@ -1,6 +1,7 @@
 package com.algaWorks.algafood.di.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.algaWorks.algafood.di.modelo.Cliente;
@@ -10,6 +11,7 @@ import com.algaWorks.algafood.di.notificacao.NotificadorEmail;
 @Component
 public class AtivacaoClienteService {
 	
+	@Qualifier("urgente")
 	@Autowired(required = false)
 	private Notificador notificador;
 	
