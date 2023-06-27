@@ -4,6 +4,4 @@ public enum NivelUrgencia {
 	
 	URGENTE, 
 	NORMAL;
-	
-
 }
