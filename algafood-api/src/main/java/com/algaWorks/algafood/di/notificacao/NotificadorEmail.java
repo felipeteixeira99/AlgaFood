@@ -14,9 +14,9 @@ import com.algaWorks.algafood.di.modelo.Cliente;
 @Component
 public class NotificadorEmail implements Notificador {
 	
-	public NotificadorEmail() {
-		System.out.println("Notificador Email Real");
-	}
+//	public NotificadorEmail() {
+//		System.out.println("Notificador Email Real");
+//	}
 	
 	@Override
 	public void notificar(Cliente cliente, String mensagem) {
