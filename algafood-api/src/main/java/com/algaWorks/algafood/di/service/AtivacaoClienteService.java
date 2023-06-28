@@ -5,6 +5,7 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import com.algaWorks.algafood.di.modelo.Cliente;
@@ -31,13 +32,21 @@ public class AtivacaoClienteService {
 		System.out.println("DESTROY");
 	}
 	
+	@Autowired
+	private ApplicationEventPublisher eventPublisher;
+	
+	
 	public void ativar(Cliente cliente) {
 		cliente.ativar();
 		
-		if(notificador != null) {
-			notificador.notificar(cliente,"Seu cadastro no sistema está ativo");
-		} else {
-			System.out.println("Não existe notificador, mas o cliente foi ativado");
-		}
+//		if(notificador != null) {
+//			notificador.notificar(cliente,"Seu cadastro no sistema está ativo");
+//		} else {
+//			System.out.println("Não existe notificador, mas o cliente foi ativado");
+//		}
+		
+		eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente));
+		
+		
 	}		
 }
