@@ -23,4 +23,3 @@ public class NotificadorEmailMock implements Notificador {
 				cliente.getNome(),cliente.getEmail(), mensagem);
 		}
 	}
-

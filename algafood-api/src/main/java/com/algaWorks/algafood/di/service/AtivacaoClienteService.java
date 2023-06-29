@@ -47,6 +47,5 @@ public class AtivacaoClienteService {
 		
 		eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente));
 		
-		
 	}		
 }
