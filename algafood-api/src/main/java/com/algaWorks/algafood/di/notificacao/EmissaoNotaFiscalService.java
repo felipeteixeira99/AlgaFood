@@ -15,7 +15,7 @@ public class EmissaoNotaFiscalService{
 	
 		@EventListener
 		public void clienteAtivadoListener(ClienteAtivadoEvent event) {
-			System.out.println("Emitindo nota fiscal para cliente " + event.getCliente().getNome());
+			//System.out.println("Emitindo nota fiscal para cliente " + event.getCliente().getNome());
 			//System.out.println("Cliente " + event.getCliente().getNome() + " agora está ativo.");
 			
 		}

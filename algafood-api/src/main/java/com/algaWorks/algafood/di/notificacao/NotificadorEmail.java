@@ -1,5 +1,6 @@
 package com.algaWorks.algafood.di.notificacao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
@@ -15,11 +16,14 @@ import com.algaWorks.algafood.di.modelo.Cliente;
 @Component
 public class NotificadorEmail implements Notificador {
 	
-	@Value("${notificador.emai.host-servidor}")
-	private String host;
+	@Autowired
+	private NotificadorProperties properties;
 	
-	@Value("${notificador.email.porta-servidor}")
-	private int porta;
+//	@Value("${notificador.emai.host-servidor}")
+//	private String host;
+//	
+//	@Value("${notificador.email.porta-servidor}")
+//	private int porta;
 	
 //	public NotificadorEmail() {
 //		System.out.println("Notificador Email Real");
@@ -28,8 +32,8 @@ public class NotificadorEmail implements Notificador {
 	
 	@Override
 	public void notificar(Cliente cliente, String mensagem) {
-		System.out.println("Host " + host);
-		System.out.println("Porta " + porta);
+		System.out.println("Host " + properties.getHostServidor());
+		System.out.println("Porta " + properties.getPortaServidor());
 		System.out.printf("Notificando %s através do e-mail %s: %s\n",
 				cliente.getNome(),cliente.getEmail(), mensagem);
 		}
