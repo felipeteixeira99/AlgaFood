@@ -7,10 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AlgafoodApiApplication {
 
 	public static void main(String[] args) {
-		for(int i = 0; i < args.length; i++) {
-			System.out.println("Parametro N - " + i +  ": " + args[i]);
-		}
 		SpringApplication.run(AlgafoodApiApplication.class, args);
 	}
-
 }
