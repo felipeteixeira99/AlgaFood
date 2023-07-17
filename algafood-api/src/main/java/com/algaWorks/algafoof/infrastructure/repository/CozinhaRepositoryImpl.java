@@ -6,12 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Component;
-
 import com.algaWorks.algafood.domain.model.Cozinha;
 import com.algaWorks.algafoof.domain.repository.CozinhaRepository;
 
-@Component
 public class CozinhaRepositoryImpl implements CozinhaRepository{
 
 	
@@ -35,7 +32,7 @@ public class CozinhaRepositoryImpl implements CozinhaRepository{
 	public Cozinha salvar(Cozinha cozinha) {
 		return manager.merge(cozinha);
 	}
-	
+
 	@Override
 	@Transactional
 	public void remover(Cozinha cozinha) {
