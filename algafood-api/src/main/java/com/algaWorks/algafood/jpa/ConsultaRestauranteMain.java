@@ -1,4 +1,4 @@
-package com.algaWorks.algafood.jpaRestaurante;
+package com.algaWorks.algafood.jpa;
 
 
 
@@ -12,7 +12,7 @@ import com.algaWorks.algafood.AlgafoodApiApplication;
 import com.algaWorks.algafood.domain.model.Restaurante;
 import com.algaWorks.algafood.infrastructure.repository.RestauranterepositoryImpl;
 
-public class ListaRestaurantes {
+public class ConsultaRestauranteMain {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -24,8 +24,9 @@ public class ListaRestaurantes {
 		List<Restaurante> restaurantes = restauranteRepository.trazerTodos();
 		
 		for(Restaurante restaurante : restaurantes) {
-			System.out.println(restaurante.getNome());
-			
+			System.out.printf("%s - %f - %s \n", restaurante.getNome()
+					,restaurante.getTaxaFrete()
+					,restaurante.getCozinha().getNome());		
 		}
 
 	}
