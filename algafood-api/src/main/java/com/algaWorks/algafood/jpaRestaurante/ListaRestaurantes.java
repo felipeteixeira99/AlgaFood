@@ -25,6 +25,7 @@ public class ListaRestaurantes {
 		
 		for(Restaurante restaurante : restaurantes) {
 			System.out.println(restaurante.getNome());
+			System.out.println("Teste");
 			
 		}
 
