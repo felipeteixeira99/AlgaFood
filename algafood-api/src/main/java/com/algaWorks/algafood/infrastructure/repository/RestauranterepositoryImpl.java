@@ -44,5 +44,4 @@ public class RestauranterepositoryImpl implements RestauranteRepository {
 		gerenciador.remove(restaurante);
 	}
 
-
 }
