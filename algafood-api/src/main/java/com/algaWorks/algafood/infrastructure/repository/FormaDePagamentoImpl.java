@@ -2,15 +2,25 @@ package com.algaWorks.algafood.infrastructure.repository;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Component;
+
 import com.algaWorks.algafood.domain.model.FormaDePagamento;
 import com.algaWorks.algafood.domain.repository.FormaDePagamentoRepository;
 
+@Component
 public class FormaDePagamentoImpl implements FormaDePagamentoRepository {
+	
+	@PersistenceContext
+	private EntityManager gerenciador;
 
 	@Override
 	public List<FormaDePagamento> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.createQuery("from FormaDePagamento", FormaDePagamento.class)
+				.getResultList();
 	}
 
 	@Override
