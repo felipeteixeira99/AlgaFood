@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.orm.jpa.EntityManagerFactoryUtils;
 import org.springframework.stereotype.Component;
@@ -25,14 +26,13 @@ public class EstadoImpl implements EstadoRepository {
 
 	@Override
 	public Estado buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.find(Estado.class, id);
 	}
 
 	@Override
+	@Transactional
 	public Estado adicionar(Estado estado) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.merge(estado);
 	}
 
 	@Override
