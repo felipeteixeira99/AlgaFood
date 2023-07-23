@@ -38,8 +38,7 @@ public class FormaDePagamentoImpl implements FormaDePagamentoRepository {
 	@Override
 	@Transactional
 	public void deletar(FormaDePagamento formaPagamento) {
-		// TODO Auto-generated method stub
-		
+		formaPagamento = buscarPorId(formaPagamento.getId());
+		gerenciador.remove(formaPagamento);	
 	}
-
 }
