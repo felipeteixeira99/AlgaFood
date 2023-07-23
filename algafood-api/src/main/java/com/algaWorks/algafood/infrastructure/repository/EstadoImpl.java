@@ -6,10 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.orm.jpa.EntityManagerFactoryUtils;
+import org.springframework.stereotype.Component;
 
 import com.algaWorks.algafood.domain.model.Estado;
 import com.algaWorks.algafood.domain.repository.EstadoRepository;
 
+@Component
 public class EstadoImpl implements EstadoRepository {
 	
 	@PersistenceContext
