@@ -10,7 +10,7 @@ import com.algaWorks.algafood.AlgafoodApiApplication;
 import com.algaWorks.algafood.domain.model.FormaDePagamento;
 import com.algaWorks.algafood.infrastructure.repository.FormaDePagamentoImpl;
 
-public class AdicionarFormaDePagamento {
+public class AlterarFormaDePagamento {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)

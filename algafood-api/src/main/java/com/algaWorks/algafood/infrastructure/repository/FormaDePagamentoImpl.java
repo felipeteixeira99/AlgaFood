@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
@@ -29,12 +30,13 @@ public class FormaDePagamentoImpl implements FormaDePagamentoRepository {
 	}
 
 	@Override
+	@Transactional
 	public FormaDePagamento adicionar(FormaDePagamento formaPagamento) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.merge(formaPagamento);
 	}
 
 	@Override
+	@Transactional
 	public void deletar(FormaDePagamento formaPagamento) {
 		// TODO Auto-generated method stub
 		
