@@ -36,9 +36,10 @@ public class EstadoImpl implements EstadoRepository {
 	}
 
 	@Override
+	@Transactional
 	public void deletar(Estado estado) {
-		// TODO Auto-generated method stub
-		
+		estado = buscarPorId(estado.getId());
+		gerenciador.remove(estado);
 	}
 
 }

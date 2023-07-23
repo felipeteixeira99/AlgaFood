@@ -21,12 +21,13 @@ public class AlterarEstado {
 		
 		EstadoImpl estado = applicationContext.getBean(EstadoImpl.class);
 		
-		Estado estadoId = new Estado();
-		estadoId.setNome("Mato Grosso");
+		Estado estadoAlt = new Estado();
+		estadoAlt.setId(1L);
+		estadoAlt.setNome("Mato Grosso");
 		
-		estadoId = estado.adicionar(estadoId);
+		estadoAlt = estado.adicionar(estadoAlt);
 		
-		System.out.println("Estado Adicionado: " + estadoId.getNome());
+		System.out.println("Estado Alterado para: " + estadoAlt.getNome());
 		
 		
 	}

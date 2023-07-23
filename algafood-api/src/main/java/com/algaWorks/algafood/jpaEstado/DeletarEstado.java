@@ -12,7 +12,7 @@ import com.algaWorks.algafood.infrastructure.repository.EstadoImpl;
 
 
 
-public class AdicionarEstado {
+public class DeletarEstado {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -21,11 +21,9 @@ public class AdicionarEstado {
 		
 		EstadoImpl estado = applicationContext.getBean(EstadoImpl.class);
 		
-		Estado estadoId = new Estado();
-		estadoId.setNome("Mato Grosso");
-		estadoId = estado.adicionar(estadoId);
-		
-		System.out.println("Estado Adicionado: " + estadoId.getNome());
+		Estado estadoExlcuir = new Estado();
+		estadoExlcuir.setId(1L);
+		estado.deletar(estadoExlcuir);
 	}
 
 }
