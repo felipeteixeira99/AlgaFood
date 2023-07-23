@@ -10,3 +10,7 @@ insert into tab_forma_pagamento(nome) values ('Credito');
 insert into tab_forma_pagamento(nome) values ('Debito');
 insert into tab_forma_pagamento(nome) values ('Pix');
 
+insert into tab_estado(nome) values ('Goias');
+insert into tab_estado(nome) values ('Rio De Janeiro');
+insert into tab_estado(nome) values ('Ceara');
+
