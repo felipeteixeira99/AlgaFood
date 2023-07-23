@@ -25,8 +25,7 @@ public class FormaDePagamentoImpl implements FormaDePagamentoRepository {
 
 	@Override
 	public FormaDePagamento buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.find(FormaDePagamento.class,id);
 	}
 
 	@Override

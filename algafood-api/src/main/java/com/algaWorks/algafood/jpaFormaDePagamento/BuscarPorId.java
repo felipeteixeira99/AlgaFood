@@ -10,7 +10,7 @@ import com.algaWorks.algafood.AlgafoodApiApplication;
 import com.algaWorks.algafood.domain.model.FormaDePagamento;
 import com.algaWorks.algafood.infrastructure.repository.FormaDePagamentoImpl;
 
-public class ListaFormasDePagamento {
+public class BuscarPorId {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -19,11 +19,9 @@ public class ListaFormasDePagamento {
 		
 		FormaDePagamentoImpl formaPagamento = applicationContext.getBean(FormaDePagamentoImpl.class);
 		
-		List<FormaDePagamento> formasPagamentos = formaPagamento.buscarTodos();
+		FormaDePagamento formaDePagamento = formaPagamento.buscarPorId(4L);
 		
-		for(FormaDePagamento formaPagamentos : formasPagamentos) {
-			System.out.println(formaPagamentos.getNome());
-		}
+		System.out.println(formaDePagamento.getNome());
 		
 	}
 }

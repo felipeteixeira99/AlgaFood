@@ -8,4 +8,5 @@ insert into restaurante(nome,taxa_frete, cozinha_id) values ('SubWay', 9.50, 2);
 insert into tab_forma_pagamento(nome) values ('Dinheiro');
 insert into tab_forma_pagamento(nome) values ('Credito');
 insert into tab_forma_pagamento(nome) values ('Debito');
+insert into tab_forma_pagamento(nome) values ('Pix');
 
