@@ -10,18 +10,20 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
 @EqualsAndHashCode
+@Data
 @Entity
-@Table(name = "tabEstado")
-
-public class Estado {
+@Table(name = "tabCidade")
+public class Cidade {
 	
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 	@Column(nullable = false)
-	private String nome;	
+	private String nome;
+	
+//	@Column(nullable = false)
+//	private Estado estado;
+	
 }
