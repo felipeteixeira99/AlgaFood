@@ -14,5 +14,7 @@ insert into tab_estado(nome) values ('Goias');
 insert into tab_estado(nome) values ('Rio De Janeiro');
 insert into tab_estado(nome) values ('Ceara');
 
-insert into tabCidade(nome) values ('Goiania');
-insert into tabCidade(nome) values ('Trindade');
+insert into tab_cidade(nome, estado_id) values ('Goiania', 1);
+insert into tab_cidade(nome, estado_id) values ('Aquiraz', 2);
+insert into tab_cidade(nome, estado_id) values ('Anapolis', 2);
+
