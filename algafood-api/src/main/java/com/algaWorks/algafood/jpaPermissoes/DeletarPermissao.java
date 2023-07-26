@@ -11,7 +11,7 @@ import com.algaWorks.algafood.AlgafoodApiApplication;
 import com.algaWorks.algafood.domain.model.Permissoes;
 import com.algaWorks.algafood.infrastructure.repository.PermissaoImpl;
 
-public class ListarPermissoes {
+public class DeletarPermissao {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -19,12 +19,11 @@ public class ListarPermissoes {
 				.run(args);
 		
 		PermissaoImpl permissao = applicationContext.getBean(PermissaoImpl.class);
+		Permissoes permissaoDel = new Permissoes();
+		permissaoDel.setId(2l);
 		
-		List<Permissoes> ListaDePermissoes = permissao.listar();
+		permissao.deletar(permissaoDel);
 		
-		for(Permissoes permissoes : ListaDePermissoes) {
-			System.out.println("Permissoes Encontradas: " + permissoes.getNome());
-		}
+		System.out.println("Permissao Deletada Com Sucesso");
 	}
-
 }

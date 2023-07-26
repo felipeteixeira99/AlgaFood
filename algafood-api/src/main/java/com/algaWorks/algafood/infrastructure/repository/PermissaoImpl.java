@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
@@ -18,26 +19,27 @@ public class PermissaoImpl implements PermissoesRepository {
 
 	@Override
 	public List<Permissoes> listar(){
-		return gerenciador.createQuery("from Permisoes", Permissoes.class)
+		return gerenciador.createQuery("from Permissoes", Permissoes.class)
 				.getResultList();
 	}
 
 	@Override
 	public Permissoes buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.find(Permissoes.class, id);
 	}
 
 	@Override
+	@Transactional
 	public Permissoes adcionar(Permissoes permissao) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.merge(permissao);
+
 	}
 
 	@Override
+	@Transactional
 	public void deletar(Permissoes permissao) {
-		// TODO Auto-generated method stub
-		
+		permissao = buscarPorId(permissao.getId());
+		gerenciador.remove(permissao);	
 	}
 
 }

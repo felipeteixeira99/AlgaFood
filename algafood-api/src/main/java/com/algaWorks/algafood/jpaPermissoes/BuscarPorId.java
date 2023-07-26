@@ -11,7 +11,7 @@ import com.algaWorks.algafood.AlgafoodApiApplication;
 import com.algaWorks.algafood.domain.model.Permissoes;
 import com.algaWorks.algafood.infrastructure.repository.PermissaoImpl;
 
-public class ListarPermissoes {
+public class BuscarPorId {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -19,12 +19,8 @@ public class ListarPermissoes {
 				.run(args);
 		
 		PermissaoImpl permissao = applicationContext.getBean(PermissaoImpl.class);
-		
-		List<Permissoes> ListaDePermissoes = permissao.listar();
-		
-		for(Permissoes permissoes : ListaDePermissoes) {
-			System.out.println("Permissoes Encontradas: " + permissoes.getNome());
-		}
+		Permissoes permissaoId = new Permissoes();
+		permissaoId = permissao.buscarPorId(2l);
+		System.out.println("Permissao Selecionada: " + permissaoId.getNome());
 	}
-
 }

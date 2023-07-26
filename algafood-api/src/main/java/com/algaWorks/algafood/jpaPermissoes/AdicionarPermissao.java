@@ -11,7 +11,7 @@ import com.algaWorks.algafood.AlgafoodApiApplication;
 import com.algaWorks.algafood.domain.model.Permissoes;
 import com.algaWorks.algafood.infrastructure.repository.PermissaoImpl;
 
-public class ListarPermissoes {
+public class AdicionarPermissao {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -19,12 +19,12 @@ public class ListarPermissoes {
 				.run(args);
 		
 		PermissaoImpl permissao = applicationContext.getBean(PermissaoImpl.class);
+		Permissoes permissao1 = new Permissoes();
+		permissao1.setNome("ADICIONAR_COZINHA");
+		permissao1.setDescricao("Permite Adicionar Uma Cozinha");
 		
-		List<Permissoes> ListaDePermissoes = permissao.listar();
+		permissao.adcionar(permissao1);
 		
-		for(Permissoes permissoes : ListaDePermissoes) {
-			System.out.println("Permissoes Encontradas: " + permissoes.getNome());
-		}
+		System.out.println("Permissao Adcionada com sucesso " + permissao1.getNome());
 	}
-
 }
