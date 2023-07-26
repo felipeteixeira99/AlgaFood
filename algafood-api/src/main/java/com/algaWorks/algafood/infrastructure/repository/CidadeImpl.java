@@ -2,21 +2,29 @@ package com.algaWorks.algafood.infrastructure.repository;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Component;
+
 import com.algaWorks.algafood.domain.model.Cidade;
 import com.algaWorks.algafood.domain.repository.CidadeRepository;
 
+@Component
 public class CidadeImpl implements CidadeRepository{
+	
+	@PersistenceContext
+	private EntityManager gerenciador;
 
 	@Override
 	public List<Cidade> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.createQuery("from Cidade",Cidade.class)
+				.getResultList();
 	}
 
 	@Override
 	public Cidade buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.find(Cidade.class, id);
 	}
 
 	@Override
