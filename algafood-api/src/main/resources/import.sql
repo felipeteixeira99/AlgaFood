@@ -18,3 +18,6 @@ insert into tab_cidade(nome, estado_id) values ('Goiania', 1);
 insert into tab_cidade(nome, estado_id) values ('Aquiraz', 2);
 insert into tab_cidade(nome, estado_id) values ('Anapolis', 2);
 
+insert into tab_permissoes (nome, descricao) values ('CONSULTAR_COZINHAS', 'Permite consultar cozinhas');
+insert into tab_permissoes (nome, descricao) values ('EDITAR_COZINHAS', 'Permite editar cozinhas');
+

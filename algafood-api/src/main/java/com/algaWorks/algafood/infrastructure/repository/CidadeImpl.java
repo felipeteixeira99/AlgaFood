@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
@@ -28,15 +29,16 @@ public class CidadeImpl implements CidadeRepository{
 	}
 
 	@Override
+	@Transactional
 	public Cidade adicionar(Cidade cidade) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.merge(cidade);
 	}
 
 	@Override
+	@Transactional
 	public void deletar(Cidade cidade) {
-		// TODO Auto-generated method stub
-		
+		cidade = buscarPorId(cidade.getId());
+		gerenciador.remove(cidade);
 	}
 
 }
