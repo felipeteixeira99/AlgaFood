@@ -40,5 +40,4 @@ public class CidadeImpl implements CidadeRepository{
 		cidade = buscarPorId(cidade.getId());
 		gerenciador.remove(cidade);
 	}
-
 }
