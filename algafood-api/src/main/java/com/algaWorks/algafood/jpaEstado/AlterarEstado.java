@@ -29,7 +29,6 @@ public class AlterarEstado {
 		
 		System.out.println("Estado Alterado para: " + estadoAlt.getNome());
 		
-		
 	}
 
 }
