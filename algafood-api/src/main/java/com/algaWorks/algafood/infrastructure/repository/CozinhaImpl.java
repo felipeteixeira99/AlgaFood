@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
@@ -25,19 +26,19 @@ public class CozinhaImpl implements CozinhaRepository {
 
 	@Override
 	public Cozinha buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return gerenciador.find(Cozinha.class, id);
 	}
 
 	@Override
+	@Transactional
 	public Cozinha adicionar(Cozinha cozinha) {
-		// TODO Auto-generated method stub
+		gerenciador.merge(cozinha);
 		return null;
 	}
 
 	@Override
 	public void deletar(Cozinha cozinha) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
