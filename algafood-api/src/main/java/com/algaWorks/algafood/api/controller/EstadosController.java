@@ -22,5 +22,6 @@ public class EstadosController {
 	@GetMapping
 	public List<Estado> listar(){
 		return estadoRepository.listarTodos();
+		
 	}
 }

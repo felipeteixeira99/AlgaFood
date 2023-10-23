@@ -3,6 +3,7 @@ package com.algaWorks.algafood.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,15 +16,23 @@ import com.algaWorks.algafood.domain.repository.CozinhaRepository;
 @RestController
 //@Controller
 //@ResponseBody
-@RequestMapping("/cozinhas")
+@RequestMapping(value = "/cozinhas")//, produces = MediaType.APPLICATION_JSON_VALUE)
 
 public class CozinhaControleer {
 	
 	@Autowired
 	private CozinhaRepository cozinhaRepository;
 	
-	@GetMapping
-	public List<Cozinha> listar(){
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Cozinha> listar1(){
+		System.out.println("LISTAR 1");
+		return cozinhaRepository.buscarTodos();
+	}
+	
+	
+	@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+	public List<Cozinha> listar2(){
+		System.out.println("LISTAR 2");
 		return cozinhaRepository.buscarTodos();
 	}
 }
