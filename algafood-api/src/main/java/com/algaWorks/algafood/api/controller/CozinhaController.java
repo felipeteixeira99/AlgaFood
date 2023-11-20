@@ -36,9 +36,9 @@ public class CozinhaController {
 		System.out.println("LISTAR 2");
 		return cozinhaRepository.buscarTodos();
 	}
-	
-	@GetMapping
-	public Cozinha buscar(@PathVariable("cozinhaId") Long id) {
-		return cozinhaRepository.buscarPorId(id);
+
+	@GetMapping("/{cozinhaid}")
+	public Cozinha buscar(@PathVariable() Long cozinhaid) {
+		return cozinhaRepository.buscarPorId(cozinhaid);
 	}
 }
