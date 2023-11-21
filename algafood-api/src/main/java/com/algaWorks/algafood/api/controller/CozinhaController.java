@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaWorks.algafood.domain.model.Cozinha;
+import com.algaWorks.algafood.domain.model.CozinhasXmlWrapper;
 import com.algaWorks.algafood.domain.repository.CozinhaRepository;
 
 @RestController
@@ -31,14 +32,20 @@ public class CozinhaController {
 	}
 	
 	
-	@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-	public List<Cozinha> listar2(){
-		System.out.println("LISTAR 2");
-		return cozinhaRepository.buscarTodos();
-	}
+//	@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+//	public List<Cozinha> listar2(){
+//		System.out.println("LISTAR 2");
+//		return cozinhaRepository.buscarTodos();
+//	}
 
 	@GetMapping("/{cozinhaid}")
 	public Cozinha buscar(@PathVariable() Long cozinhaid) {
 		return cozinhaRepository.buscarPorId(cozinhaid);
+	}
+	
+	@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+	public CozinhasXmlWrapper listarXml(){
+		return new CozinhasXmlWrapper(cozinhaRepository.buscarTodos());
+		
 	}
 }
