@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaWorks.algafood.domain.model.Cozinha;
+import com.algaWorks.algafood.domain.model.CozinhasXmlWrapper;
 import com.algaWorks.algafood.domain.repository.CozinhaRepository;
 
 //Modelagem Rest API
@@ -21,17 +22,36 @@ import com.algaWorks.algafood.domain.repository.CozinhaRepository;
 //@Controller //Componente spring do tipo controlador
 //@ResponseBody //
 @RestController //Possui o Controller e o ResponseBody
-@RequestMapping(value = "/cozinhas", produces = MediaType.APPLICATION_JSON_VALUE) //Mapeamento do controlador responsavel pelas as requisições especificando a URI desse controlador
-//colocando o produces na classe, ele vai pergar todo o escopo da classe
+@RequestMapping(value = "/cozinhas")//, produces = MediaType.APPLICATION_JSON_VALUE)
+//@RequestMapping(value = "/cozinhas", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+//Mapeamento do controlador responsavel pelas as requisições especificando a URI desse controlador
+//colocando o produces na classe, ele vai pegar todo o escopo da classe
 public class CozinhaController {
 	
 	@Autowired  
 	private CozinhaRepository cozinhaRepository; //variavel de instancia que implementa a interface de Cozinha
-	
-	@GetMapping()//Significa que requisições com o verbo HTTP Get irão cair nesse metodo
-	public List<Cozinha> listarCozinha(){  //metodo que recebe e retorna a listagem de cozinhas salvas no banco
+		
+	//Metodo que irá retornar e json
+	@GetMapping//Significa que requisições com o verbo HTTP Get irão cair nesse metodo
+	public List<Cozinha> listarCozinhasJson(){  //metodo que recebe e retorna a listagem de cozinhas salvas no banco
 		return cozinhaRepository.buscarTodos();
 	}
+	
+	//Metodo que traz as cozinhas salvas no banco, porem usando uma outra classe que embrulha as cozinhas em formato XML 
+	//Customizado
+	 @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+	 public CozinhasXmlWrapper listarXml(){
+		 return new CozinhasXmlWrapper(cozinhaRepository.buscarTodos());
+	}
+	 
+	/*
+	 * //Metodo que irá retornar em JSON
+	 * 
+	 * @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE) //Significa que
+	 * requisições com o verbo HTTP Get irão cair nesse metodo public List<Cozinha>
+	 * listarCozinhaJson(){ //metodo que recebe e retorna a listagem de cozinhas
+	 * salvas no banco return cozinhaRepository.buscarTodos(); }
+	 */
 	
 	//Retorna uma cozinha conforme ID passado no parametro
 	//A anotação pathvariable atribui a variavel passada no getmapping para o id, e o mesmo é retornado no fim do metodo
@@ -39,5 +59,6 @@ public class CozinhaController {
 	public Cozinha buscarCozinhaId(@PathVariable Long cozinhaId) {
 		return cozinhaRepository.buscarPorId(cozinhaId);
 	}
+		
 
 }

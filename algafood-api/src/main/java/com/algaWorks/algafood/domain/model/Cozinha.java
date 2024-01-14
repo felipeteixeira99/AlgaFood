@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@JsonRootName("Gastronomia")
+//@JsonRootName("COZINHA")  //--Precedencia maior
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
