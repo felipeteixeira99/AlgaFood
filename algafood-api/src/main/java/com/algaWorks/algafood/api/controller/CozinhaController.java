@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,13 @@ public class CozinhaController {
 	@GetMapping()//Significa que requisições com o verbo HTTP Get irão cair nesse metodo
 	public List<Cozinha> listarCozinha(){  //metodo que recebe e retorna a listagem de cozinhas salvas no banco
 		return cozinhaRepository.buscarTodos();
+	}
+	
+	//Retorna uma cozinha conforme ID passado no parametro
+	//A anotação pathvariable atribui a variavel passada no getmapping para o id, e o mesmo é retornado no fim do metodo
+	@GetMapping("/{cozinhaId}")
+	public Cozinha buscarCozinhaId(@PathVariable Long cozinhaId) {
+		return cozinhaRepository.buscarPorId(cozinhaId);
 	}
 
 }
