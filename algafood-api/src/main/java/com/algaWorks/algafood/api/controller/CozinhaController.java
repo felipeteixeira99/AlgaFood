@@ -40,25 +40,39 @@ public class CozinhaController {
 //		return cozinhaRepository.buscarTodos();
 //	}
 
-	@ResponseStatus(HttpStatus.CREATED)
-	@GetMapping("/{cozinhaId}")
-	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
-		Cozinha  cozinha = cozinhaRepository.buscarPorId(cozinhaId);
-//		return ResponseEntity.status(HttpStatus.OK).body(cozinha);  //retorna a requisição com o corpo da resposta
-//		return ResponseEntity.status(HttpStatus.OK).build();		//retorna a requisição sem o corpo da resposta
-//		return ResponseEntity.ok(cozinha);							//retorna a requisição com o corpo da resposta
-//		return ResponseEntity.ok(cozinha);
-		
-		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-		headers.add(org.springframework.http.HttpHeaders.LOCATION, "http://api.algafood.local:8080/cozinhas");
-		
-		return ResponseEntity
-				.status(HttpStatus.FOUND)
-				.headers(headers)
-				.build();
-	}
+	/*
+	 * @ResponseStatus(HttpStatus.CREATED)
+	 * 
+	 * @GetMapping("/{cozinhaId}") public ResponseEntity<Cozinha>
+	 * buscar(@PathVariable Long cozinhaId) { Cozinha cozinha =
+	 * cozinhaRepository.buscarPorId(cozinhaId); // return
+	 * ResponseEntity.status(HttpStatus.OK).body(cozinha); //retorna a requisição
+	 * com o corpo da resposta // return
+	 * ResponseEntity.status(HttpStatus.OK).build(); //retorna a requisição sem o
+	 * corpo da resposta // return ResponseEntity.ok(cozinha); //retorna a
+	 * requisição com o corpo da resposta // return ResponseEntity.ok(cozinha);
+	 * 
+	 * org.springframework.http.HttpHeaders headers = new
+	 * org.springframework.http.HttpHeaders();
+	 * headers.add(org.springframework.http.HttpHeaders.LOCATION,
+	 * "http://api.algafood.local:8080/cozinhas");
+	 * 
+	 * return ResponseEntity .status(HttpStatus.FOUND) .headers(headers) .build(); }
+	 */
 	
 
+	@GetMapping
+	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId){
+		Cozinha cozinha = cozinhaRepository.buscarPorId(cozinhaId);
+		
+		if (cozinha != null) {
+			return ResponseEntity.ok(cozinha);
+		}
+		//return ResponseEntity<Cozinha.status(HttpStatus.NOT_FOUND);
+	   return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	}
+	 
+	
 	
 	@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
 	public CozinhasXmlWrapper listarXml(){
@@ -67,20 +81,3 @@ public class CozinhaController {
 	}
 }
 
-
-
-
-////@ResponseStatus(HttpStatus.CREATED)
-//@GetMapping("/{cozinhaid}")
-//public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
-//	Cozinha  cozinha = cozinhaRepository.buscarPorId(cozinhaId);
-//	return ResponseEntity.status(HttpStatus.OK).body(cozinha);
-//	
-//}
-//
-//
-//@ResponseStatus(HttpStatus.CREATED)
-//@GetMapping("/{cozinhaid}")
-//public Cozinha buscar(@PathVariable() Long cozinhaid) {
-//	return cozinhaRepository.buscarPorId(cozinhaid);
-//}
