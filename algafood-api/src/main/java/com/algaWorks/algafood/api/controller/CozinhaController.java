@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -71,18 +73,34 @@ public class CozinhaController {
 		public ResponseEntity <Cozinha> buscarCozinhaId(@PathVariable Long cozinhaId) {
 			Cozinha cozinha = cozinhaRepository.buscarPorId(cozinhaId);
 			
+			if (cozinha != null) {
+				return ResponseEntity.ok(cozinha);
+			}
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.notFound().build(); //faz a mesma coisa que o codigo acima. com menos codigo
+			
 //			return ResponseEntity.status(HttpStatus.OK).body(cozinha); //Retorna a resposta HTTP com um corpo
 //			return ResponseEntity.status(HttpStatus.OK).build(); //Retorna uma resposta HTTp, porem sem um corpo
 //			return ResponseEntity.ok(cozinha);  //Mesma coisa da linha acima, porem com menos codigo
-			
+/*			
+			//Esse bloco faz com que a requisição seja redirecionada para outro local - codigo de status 302
+			//Faz a mesma coisa que o codigo de cima, porem sem o redirecionamento
 			HttpHeaders headers = new HttpHeaders();
 			headers.add(HttpHeaders.LOCATION, "http://api.algafood.local:8080/cozinhas");
-			
 			return ResponseEntity
 					.status(HttpStatus.FOUND)
-					.headers(headers)
-					.build();
+//					.headers(headers)
+//					.body(cozinha); //retorna o corpo da resposta
+					//.build(); //retorna sem o corpo da resposta
+		}
+		*/
 		}
 		
-
+		// Inclusão de Cozinha - Metodo POST
+		
+		@PostMapping
+		public void adicionar(@RequestBody Cozinha cozinha) {
+			cozinhaRepository.adicionar(cozinha);
+		}
+		
 }
