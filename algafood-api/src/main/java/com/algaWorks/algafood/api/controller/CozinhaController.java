@@ -99,6 +99,7 @@ public class CozinhaController {
 		// Inclusão de Cozinha - Metodo POST
 		
 		@PostMapping
+		@ResponseStatus(HttpStatus.CREATED) //retorna o codigo http 201 Que significa que o recurso foi criado
 		public void adicionar(@RequestBody Cozinha cozinha) {
 			cozinhaRepository.adicionar(cozinha);
 		}

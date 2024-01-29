@@ -22,11 +22,11 @@ public class AdicionarCozinha {
 		CozinhaImpl cozinha = applicationContext.getBean(CozinhaImpl.class);	
 		
 		Cozinha cozinha1 = new Cozinha();
-		cozinha1.setNome("Americana");
+		cozinha1.setNome("");
 		cozinha.adicionar(cozinha1);
 	
 		Cozinha cozinha2 = new Cozinha();
-		cozinha2.setNome("Arabe");
+		cozinha2.setNome("");
 		cozinha.adicionar(cozinha2);
 		
 		System.out.printf("%d - %s\n", cozinha1.getId(), cozinha1.getNome());
