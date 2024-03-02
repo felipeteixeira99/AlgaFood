@@ -27,6 +27,8 @@ public class AlteracaoCozinha {
 		cozinha.adicionar(cozinhaAlt);
 		
 		System.out.println("Cozinha alterada para: " + cozinhaAlt.getNome());
+		
+		//teste
 
 		}
 	}
