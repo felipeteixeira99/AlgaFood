@@ -2,15 +2,19 @@ package com.algaWorks.algafood.api.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -104,4 +108,39 @@ public class CozinhaController {
 			cozinhaRepository.adicionar(cozinha);
 		}
 		
-}
+		
+		//Metodo de Update PUT
+		
+		@PutMapping("/{cozinhaId}")
+		public ResponseEntity<Cozinha> atualizar(@PathVariable Long cozinhaId,
+				@RequestBody Cozinha cozinha){  //Cozinha que o consumidor da API está tentando enviar ao banco
+			Cozinha cozinhaAtual = cozinhaRepository.buscarPorId(cozinhaId); //Nova cozinha que será salva dentro do banco
+			
+			if(cozinha != null) {
+				BeanUtils.copyProperties(cozinha, cozinhaAtual, "id"); //Copie os valores de cozinha e atribua a cozinhAtual
+				cozinhaRepository.adicionar(cozinhaAtual);
+				
+				return ResponseEntity.ok(cozinhaAtual);
+			}
+			return ResponseEntity.notFound().build();
+		}
+		
+		//Anotacao
+		@DeleteMapping("/{cozinhaId}") //Metodo para deletar um recurso
+		public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId){
+			//Esse try é para tratar caso a cozinha a ser deletada esteja sendo referenciada em alguma outra tabela
+			//Nesse caso ele não irá permitir a sua exclusao
+			try {
+				Cozinha cozinha = cozinhaRepository.buscarPorId(cozinhaId); //Nova cozinha que será salva dentro do banco
+				if(cozinha != null) {
+					cozinhaRepository.deletar(cozinha);
+					return ResponseEntity.noContent().build();	//Se cozinha for diferente de null deleta o ID passado no parametro
+			}
+				return ResponseEntity.notFound().build(); //Caso contrario retorne Notfound -Recurso não encontrado
+			
+			}catch(DataIntegrityViolationException e){
+				return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
+}		
+
